@@ -12,30 +12,27 @@ class ProgrammaticDateSelection extends StatefulWidget {
 
 class ProgrammaticSelectionCalendarState
     extends State<ProgrammaticDateSelection> {
-  CalendarController _calendarController;
-
-  @override
-  void initState() {
-    _calendarController = CalendarController();
-    super.initState();
-  }
+  final CalendarController _calendarController= CalendarController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-      child: SfCalendar(
-        view: CalendarView.month,
-        controller: _calendarController,
-        onViewChanged: viewChanged,
-      ),
-    )
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          body: SafeArea(
+            child: SfCalendar(
+              view: CalendarView.month,
+              controller: _calendarController,
+              onViewChanged: viewChanged,
+            ),
+          )
         // This trailing comma makes auto-formatting nicer for build methods.
-        );
+      ),
+    );
   }
 
   void viewChanged(ViewChangedDetails viewChangedDetails) {
-    SchedulerBinding.instance.addPostFrameCallback((Duration duration) {
+    SchedulerBinding.instance!.addPostFrameCallback((Duration duration) {
       _calendarController.selectedDate = viewChangedDetails.visibleDates[0];
     });
   }
