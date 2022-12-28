@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-void main() => runApp(ProgrammaticDateSelection());
+void main() => runApp(const ProgrammaticDateSelection());
 
 class ProgrammaticDateSelection extends StatefulWidget {
+  const ProgrammaticDateSelection({super.key});
+
   @override
   ProgrammaticSelectionCalendarState createState() =>
       ProgrammaticSelectionCalendarState();
